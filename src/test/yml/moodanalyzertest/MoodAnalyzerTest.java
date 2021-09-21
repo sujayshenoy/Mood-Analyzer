@@ -28,4 +28,15 @@ public class MoodAnalyzerTest {
         String expected = "HAPPY";
         Assert.assertEquals(expected, actual);
     }
+
+    /**
+     * Test case to check for null mood
+     */
+    @Test
+    public void nullTest() {
+        MoodAnalyzer moodAnalyzer = new MoodAnalyzer();
+        String actual = moodAnalyzer.analyzeMood();
+        String expected = "HAPPY";
+        Assert.assertEquals(expected, actual);
+    }
 }

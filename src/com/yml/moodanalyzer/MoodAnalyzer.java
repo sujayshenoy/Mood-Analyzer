@@ -28,10 +28,16 @@ public class MoodAnalyzer {
      * This method analyzes mood based on message provided
      */
     public String analyzeMood() {
-        if (message.toUpperCase().contains("SAD")) {
-            return "SAD";
-        }
-        else
+        try{
+            if (message.toUpperCase().contains("SAD")) {
+                return "SAD";
+            }
+            else{
+                return "HAPPY";
+            }
+        } catch (NullPointerException e) {
             return "HAPPY";
+        }
+        
     }
 }
