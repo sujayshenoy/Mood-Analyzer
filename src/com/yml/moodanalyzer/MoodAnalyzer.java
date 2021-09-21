@@ -6,6 +6,10 @@ package com.yml.moodanalyzer;
  */
 public class MoodAnalyzer {
     String message;
+
+    public static enum Errors {
+        EMPTY_MOOD, NULL_MOOD
+    }
     
     public MoodAnalyzer(){
 
@@ -27,8 +31,12 @@ public class MoodAnalyzer {
      * @return String
      * This method analyzes mood based on message provided
      */
-    public String analyzeMood() {
-        try{
+    public String analyzeMood() throws MoodAnalyzerException{
+        try {
+            if (message.length() == 0) {
+                throw new MoodAnalyzerException(Errors.EMPTY_MOOD.toString());
+            }
+
             if (message.toUpperCase().contains("SAD")) {
                 return "SAD";
             }
@@ -36,7 +44,7 @@ public class MoodAnalyzer {
                 return "HAPPY";
             }
         } catch (NullPointerException e) {
-            return "HAPPY";
+            throw new MoodAnalyzerException(Errors.NULL_MOOD.toString());
         }
         
     }
